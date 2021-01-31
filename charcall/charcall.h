@@ -1,5 +1,5 @@
 /* charcall.h -- a character based language parser
-   v1.0
+   v1.01
 
    charcall allows you to associate a character, or a byte value, with a
    callback function. Then you can associate a string with the resulting
@@ -91,7 +91,7 @@ static inline void cc_call(cc_state * st, cc_byte ch)
 	cc_fpair * fp = &(st->etbl[ch]);
 	fp->func(ch, fp->arg);
 }
-static inline cc_byte cc_peak(cc_state * st)
+static inline cc_byte cc_peek(cc_state * st)
 {
 	return st->str[st->pos];
 }
@@ -117,7 +117,7 @@ static inline void cc_scan(cc_state * st)
 {
 	while (st->pos < st->len)
 	{
-		cc_call(st, cc_peak(st));
+		cc_call(st, cc_peek(st));
 		cc_next(st);
 	}
 }

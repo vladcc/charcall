@@ -159,34 +159,34 @@ static bool test_simple_get_set_use(void)
 	check(cc_has_more_ch_n(cc, 4));
 	check(!cc_has_more_ch_n(cc, 5));
 	
-	check('h' == cc_peak(cc));
+	check('h' == cc_peek(cc));
 	check(cc_get_pos(cc) == 0);
 	
 	cc_next(cc);
 	check(cc_get_pos(cc) == 1);
-	check('e' == cc_peak(cc));
+	check('e' == cc_peek(cc));
 	check(cc_get_pos(cc) == 1);
 	
 	cc_next(cc);
 	check(cc_get_pos(cc) == 2);
-	check('l' == cc_peak(cc));
+	check('l' == cc_peek(cc));
 	check(cc_get_pos(cc) == 2);
 	
 	cc_back(cc);
 	check(cc_get_pos(cc) == 1);
-	check('e' == cc_peak(cc));
+	check('e' == cc_peek(cc));
 	check(cc_get_pos(cc) == 1);
 	check(cc_has_more_ch(cc));
 
 	check(4 == cc_set_pos(cc, 4));
-	check('o' == cc_peak(cc));
+	check('o' == cc_peek(cc));
 	check(!cc_has_more_ch(cc));
 	
 	cc_next(cc);
-	check('\0' == cc_peak(cc));
+	check('\0' == cc_peek(cc));
 	check(!cc_has_more_ch(cc));
 	cc_rewind(cc);
-	check('h' == cc_peak(cc));
+	check('h' == cc_peek(cc));
 	check(0 == cc_get_pos(cc));
 	check(cc_has_more_ch_n(cc, 4));
 	check(!cc_has_more_ch_n(cc, 5));
